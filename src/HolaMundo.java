@@ -1,6 +1,6 @@
 public class HolaMundo {
 	public static void main(String[] args) {
-		System.out.println("Hola Mundo 25 prueba");
+		System.out.println("Hola Mundo prueba github");
 		
 		//Comentario de linea
 		
