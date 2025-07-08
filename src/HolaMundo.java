@@ -1,13 +1,12 @@
 public class HolaMundo {
 	public static void main(String[] args) {
 		System.out.println("Hola Mundo");
-<<<<<<< HEAD
+
 		System.out.println("Hola Mundo, prueba git");
 		
-=======
+
 		System.out.println("Hola Mundo prueba github");
->>>>>>> branch 'main' of https://github.com/evagarcia24/cursojava.git
-		//Comentario de linea
+
 		
 		/*
 		 * 
