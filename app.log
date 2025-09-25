@@ -1,0 +1,15 @@
+17:08:08.318 [main] INFO  HolaMundo - Hola
+17:08:48.306 [main] INFO  HolaMundo - Hola
+17:09:40.351 [main] INFO  HolaMundo - Hola
+17:12:30.592 [main] WARN  HolaMundo - Hola
+17:14:47.191 [main] WARN  HolaMundo - Hola
+17:15:17.252 [main] WARN  HolaMundo - Hola
+17:15:38.228 [main] WARN  HolaMundo - Hola
+17:26:31.161 [main] INFO  HolaMundo - Hola
+17:26:31.164 [main] WARN  HolaMundo - Hola
+17:28:45.754 [main] ERROR HolaMundo - Hola
+17:28:45.755 [main] WARN  HolaMundo - Hola
+17:28:45.755 [main] INFO  HolaMundo - Hola
+17:46:47.364 [main] ERROR HolaMundo - Hola
+17:46:47.365 [main] WARN  HolaMundo - Hola
+17:46:47.366 [main] INFO  HolaMundo - Hola

@@ -1,32 +1,32 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class HolaMundo {
+
+	private final static Logger log = LoggerFactory.getLogger(HolaMundo.class);
+	//private final static Logger log = LoggerFactory.getLogger(HolaMundo.class); //Es lo mismo que lo de arriba
+	
 	public static void main(String[] args) {
-		System.out.println("Hola Mundo");
 
-		System.out.println("Hola Mundo, prueba git");
+//		log.error("Hola");
+//		log.warn("Hola");
+//		log.info("Hola");
+		log.debug("Hola");
+		log.trace("Hola");
 		
 
-		System.out.println("Hola Mundo prueba github");
-
-		
-		/*
-		 * 
-		 * Comentario
-		 * de
-		 * bloque 
-		 */
 		
 		//Declarar una variable
-		//Indico el tipo y el nombre de la variable )notacion camelCase
-		int numero; //Declaracion
-		numero = 9; //Inicializacion
+		//Indico el tipo y el nombre de la variable (notación camelCase)
+		int numero;//Declaración
+		numero = 9;//Inicialización
 		
-		int edad = 24; //Declaracion e inicializacion
+		int edad = 24;//Declarar e inicialiazar
 		
-		System.out.println(numero + edad);
-		System.out.println("10" + (numero + edad));
-
-		System.out.println("Eva");
+		//System.out.println("resultado: " + (numero + edad) );
 		
-
+		
+		//System.out.println("Github");
 	}
+
 }
