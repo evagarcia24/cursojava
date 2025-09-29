@@ -13,3 +13,13 @@
 17:46:47.364 [main] ERROR HolaMundo - Hola
 17:46:47.365 [main] WARN  HolaMundo - Hola
 17:46:47.366 [main] INFO  HolaMundo - Hola
+18:26:21.818 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Verduras - Limpiando Verdura
+18:26:21.821 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Lechuga - Desinfectando Lechuga
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Verduras - Limpiando Verdura
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.JudiasVerdes - Y pelándolas
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.JudiasVerdes - Desinfectando JudiasVerdes
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Mesa - Limpiando class es.cursojava.inicio.interfaces.e01mueblesyverduras.Mesa
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Silla - Limpiando class es.cursojava.inicio.interfaces.e01mueblesyverduras.Silla
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Verduras - Limpiando Verdura
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.Verduras - Limpiando Verdura
+18:26:21.822 [main] INFO  es.cursojava.inicio.interfaces.e01mueblesyverduras.JudiasVerdes - Y pelándolas

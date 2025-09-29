@@ -1,6 +1,6 @@
 package es.cursojava.oo.herencia.ejercicios.hospital;
 
-public class Persona {
+public abstract class Persona {
 	private String nombre;
 	private int edad;
 
@@ -28,7 +28,6 @@ public class Persona {
 	}
 
 	// Metodo comer vacio segun enunciado
-	public void comer() {
-
-	}
+	public abstract void comer();
+	
 }

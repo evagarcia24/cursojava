@@ -24,7 +24,7 @@ public class Hospital {
 		hospital.pasarConsultas();
 	}
 
-	//Método abris hospital
+	//Método abrir hospital
 	public void abrirHospital() {
 		System.out.println("=== ABRIENDO HOSPITAL " + nombre + " ===");
 
@@ -49,6 +49,7 @@ public class Hospital {
 		System.out.println("\n=== FICHANDO EMPLEADOS ===");
 		enfermero.fichar();
 		doctor.fichar();
+		
 	}
 
 	// Metodo hora de comer

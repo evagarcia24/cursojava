@@ -5,12 +5,6 @@ public class Habitacion {
 	private Enfermo enfermo;
 
 	// Constructores
-	public Habitacion(int numero, Enfermo enfermo) {
-		super();
-		this.numero = numero;
-		this.enfermo = null; // Inicialmente vacía;
-	}
-
 	public Habitacion(int numero) {
 		super();
 		this.numero = numero;
