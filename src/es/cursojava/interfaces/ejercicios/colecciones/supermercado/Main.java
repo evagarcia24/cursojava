@@ -19,7 +19,7 @@ public class Main {
 
         Pimiento pimiento1 = new Pimiento("Pimiento rojo", 12, 1.50);
         Pimiento pimiento2 = new Pimiento("Pimiento verde", 10, 1.80);
-        Pimiento pimiento3 = new Pimiento("Pimiento padrón", 6, 2.50);
+        Pimiento pimiento3 = new Pimiento("Pimiento padron", 6, 2.50);
 
         Carne carne1 = new Carne("Carne picada", 5, 9.99);
         Carne carne2 = new Carne("Carne cerdo", 4, 5.99);
@@ -72,7 +72,7 @@ public class Main {
 
                 if (productoSeleccionado != null) {
                     cliente.getCarritoCompra().add(productoSeleccionado);
-                    System.out.println("✅ Añadido al carrito: " + productoSeleccionado.getNombre());
+                    System.out.println("✅ Añadido al carrito: " + productoSeleccionado.getNombre() +" (" + productoSeleccionado.getPrecio() + " €)");
                 } else {
                     System.out.println("❌ Producto no encontrado o agotado.");
                 }
