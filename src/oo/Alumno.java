@@ -20,16 +20,24 @@ public class Alumno {
 	private String dni;
 	private double notaMedia;
 	private String[] asignaturas;
-	
-	//Constructor por defecto
+
+	// Constructor por defecto
 	public Alumno() {
-		
+
 	}
 
 	// Constructor con nombre y dni
 	public Alumno(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
+
+	}
+
+	// Constructor con nombre, dni, nota
+	public Alumno(String nombre, String dni, double notaMedia) {
+		this.nombre = nombre;
+		this.dni = dni;
+		this.notaMedia = notaMedia;
 
 	}
 
@@ -42,7 +50,7 @@ public class Alumno {
 
 	}
 
-	//GETTERS Y SETTERS
+	// GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -74,18 +82,26 @@ public class Alumno {
 	public void setAsignaturas(String[] asignaturas) {
 		this.asignaturas = asignaturas;
 	}
-	
-	//Metodo estudiar
+
+	// Sobreescritura de metodo toString:
+	@Override
+	public String toString() {
+		return "Alumno: " + nombre + ", DNI: " + dni + ", Nota: " + notaMedia;
+	}
+
+	// Metodo estudiar
 	public void estudiar() {
-		if(notaMedia<5) {
-			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas) + " ha estudiado poco" );
-		}else if(notaMedia>=5 && notaMedia<9) {
-			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas) + " ha estudiado mucho" );
-		}else if(notaMedia>9){
-			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas) + " es un genio" );
+		if (notaMedia < 5) {
+			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas)
+					+ " ha estudiado poco");
+		} else if (notaMedia >= 5 && notaMedia < 9) {
+			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas)
+					+ " ha estudiado mucho");
+		} else if (notaMedia > 9) {
+			System.out.println("El estudiante " + nombre + " tiene las asignaturas " + Arrays.toString(asignaturas)
+					+ " es un genio");
 		}
-		
-		
-	
-}
+
+	}
+
 }
