@@ -8,8 +8,8 @@ import java.util.Set;
 public class ClienteSupermercado {
 
 	private String nombre;
-	private List<Alimento> carritoCompra = new ArrayList<>();
-	private Set<ClienteSupermercado> clientes = new HashSet<>();
+	private List<Alimento> carritoCompra;
+	private Set<ClienteSupermercado> clientes;
 
 	// Constructores sobrecargados 
 	public ClienteSupermercado(String nombre) {
@@ -55,5 +55,13 @@ public class ClienteSupermercado {
 	public void setClientes(Set<ClienteSupermercado> clientes) {
 		this.clientes = clientes;
 	}
+
+	@Override
+	public String toString() {
+		return "ClienteSupermercado [nombre=" + nombre + ", carritoCompra=" + carritoCompra + ", clientes=" + clientes
+				+ "]";
+	}
+	
+	
 
 }

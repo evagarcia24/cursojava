@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Crear alimentos con nombre, unidades disponibles y precio por unidad
+        // Crear alimentos con nombre, unidades disponibles y precio
         Platano platano1 = new Platano("Platano Oferta", 15, 1.50);
         Platano platano2 = new Platano("Platano maduro", 10, 2.50);
         Platano platano3 = new Platano("Platano Canarias", 8, 3.50);
@@ -51,7 +51,7 @@ public class Main {
         clientesIniciales.add(cliente3);
 
         // Crear supermercado
-        Supermercado supermercado = new Supermercado("Supermercado Madrid", stockInicial, clientesIniciales);
+        Supermercado supermercado = new Supermercado("Supermercado Madrid", stockInicial);
 
         // Bucle por cada cliente
         for (ClienteSupermercado cliente : supermercado.getClientes()) {
@@ -117,6 +117,7 @@ public class Main {
                 }
             }
         }
+        
         return null;
     }
 }

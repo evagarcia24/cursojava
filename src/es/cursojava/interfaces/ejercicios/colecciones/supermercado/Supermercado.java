@@ -12,11 +12,11 @@ public class Supermercado {
 	private Set<ClienteSupermercado> clientes = new HashSet<>();
 
 	// Constructor
-	public Supermercado(String nombre, List<List<Alimento>> stockAlimentos, Set<ClienteSupermercado> clientes) {
+	public Supermercado(String nombre, List<List<Alimento>> stockAlimentos) {
 		super();
 		this.nombre = nombre;
 		this.stockAlimentos = stockAlimentos;
-		this.clientes = clientes;
+		this.clientes = new HashSet();
 	}
 
 	// Getters y Setters
@@ -43,5 +43,12 @@ public class Supermercado {
 	public void setClientes(Set<ClienteSupermercado> clientes) {
 		this.clientes = clientes;
 	}
+
+	@Override
+	public String toString() {
+		return "Supermercado [nombre=" + nombre + ", stockAlimentos=" + stockAlimentos + ", clientes=" + clientes + "]";
+	}
+	
+	
 
 }
