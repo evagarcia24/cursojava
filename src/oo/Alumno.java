@@ -21,10 +21,6 @@ public class Alumno {
 	private double notaMedia;
 	private String[] asignaturas;
 
-	// Constructor por defecto
-	public Alumno() {
-
-	}
 
 	// Constructor con nombre y dni
 	public Alumno(String nombre, String dni) {
