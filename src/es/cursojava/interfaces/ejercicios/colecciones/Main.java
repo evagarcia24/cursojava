@@ -1,90 +1,82 @@
 package es.cursojava.interfaces.ejercicios.colecciones;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
+
+import es.cursojava.utils.Utilidades;
 import oo.Alumno;
 
 public class Main {
 
 	public static void main(String[] args) {
-   
 
-        // Crear 6 alumnos
-        Alumno alumno1 = new Alumno("Ivan", "1A", 7.5);
-        Alumno alumno2 = new Alumno("Pedro", "2A", 6);
-        Alumno alumno3 = new Alumno("Laura", "3A", 10);
-        Alumno alumno4 = new Alumno("Marta", "4A", 9.5);
-        Alumno alumno5 = new Alumno("Alex", "5A", 3.5);
-        Alumno alumno6 = new Alumno("Jaime", "6A", 7);
-        						
-        List<Alumno> listaAlumnos = new ArrayList<>();
-        
-        listaAlumnos.add(alumno1);
-        listaAlumnos.add(alumno2);
-        listaAlumnos.add(alumno3);
-        listaAlumnos.add(alumno4);
-        listaAlumnos.add(alumno5);
-        listaAlumnos.add(alumno6);
+		// Creacion de 7 alumnos (con nombre, dni y nota)
+		Alumno alumno1 = new Alumno("Pedro", "111A", 4);
+		Alumno alumno2 = new Alumno("Marta", "222B", 7);
+		Alumno alumno3 = new Alumno("Ivan", "333C", 5);
+		Alumno alumno4 = new Alumno("Lucía", "444D", 6);
+		Alumno alumno5 = new Alumno("Ruben", "555E", 6);
+		Alumno alumno6 = new Alumno("Laura", "666F", 10);
+		Alumno alumno7 = new Alumno("Carlos", "777G", 8);
+		
+		// Aulas para cada colegio
+				Map<String, List<Alumno>> aulas1 = new HashMap<>();
+				aulas1.put("aula1", Arrays.asList(alumno1, alumno2));
 
-        mostrarInfo(listaAlumnos);
+				Map<String, List<Alumno>> aulas2 = new HashMap<>();
+				aulas2.put("aula2", Arrays.asList(alumno3, alumno4));
 
-        mostrarSobresalientes(listaAlumnos);
+				Map<String, List<Alumno>> aulas3 = new HashMap<>();
+				aulas3.put("aula3", Arrays.asList(alumno5, alumno6, alumno7));
 
-//        mostrarNotaPorNombre(listaAlumnos);
-        
-        eliminarSuspensos(listaAlumnos);
-        
-        
+				// Crear colegios
+				Colegio colegio1 = new Colegio("Colegio1", "Calle Uno", aulas1);
+				Colegio colegio2 = new Colegio("Colegio2", "Calle Dos", aulas2);
+				Colegio colegio3 = new Colegio("Colegio3", "Calle Tres", aulas3);
 
-    }
+				// Lista de colegios
+				List<Colegio> colegios = Arrays.asList(colegio1, colegio2, colegio3);
 
-	// 3. Mostrar info de todos los alumnos
-	private static void mostrarInfo(List<Alumno> listaAlumnos) {
-		System.out.println("Todos los alumnos:");
-		for (Alumno alumno : listaAlumnos) {
-			System.out.println(alumno);
-		}
-	}
 
-	// 4. Mostrar nombre y nota de alumnos con notaMedia > 9
-	public static void mostrarSobresalientes(List<Alumno> listaAlumnos) {
-		System.out.println("\nNombres de alumnos con nota > 9:");
-		for (Alumno alumno : listaAlumnos) {
+		// Mapa con clave de aula y valor de lista de alumnos
+		Map<String, List<Alumno>> aulas = new HashMap<>();
 
-			if (alumno.getNotaMedia() > 9) {
-				System.out.println("Nombre: " + alumno.getNombre() + ", Nota: " + alumno.getNotaMedia());
-			}
-		}
-	}
+		aulas.put("aula1", Arrays.asList(alumno1, alumno2));
+		aulas.put("aula2", Arrays.asList(alumno3));
+		aulas.put("aula3", Arrays.asList(alumno4, alumno5, alumno6, alumno7));
+		
 
-	// 5. Mostrar notaMedia de todos los alumnos con el mismo nombre
-	public static void mostrarNotaPorNombre(List<Alumno> listaAlumnos) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("\nIntroduce el nombre del alumno para ver sus notas: ");
-		String nombreBuscado = scanner.nextLine();
+		// Numero total de aulas
+		System.out.println("Número total de aulas: " + aulas.size() + "\n");
 
-		boolean encontrado = false;
-		for (Alumno alumno : listaAlumnos) {
-			if (alumno.getNombre().equalsIgnoreCase(nombreBuscado)) {
-				System.out.println("Alumno: " + alumno.getNombre() + ", Nota media: " + alumno.getNotaMedia());
-				encontrado = true;
+		// Mostrar por cada aula los datos de los alumnos
+		for (String aula : aulas.keySet()) {
+			System.out.println("Aula: " + aula);
+			List<Alumno> alumnos = aulas.get(aula); 
+			for (Alumno alumno : alumnos) {
+				System.out.println("  " + alumno);
 			}
 		}
 
-		if (!encontrado) {
-			System.out.println("No se encontraron alumnos con ese nombre.");
+		// Mostrar por cada aula cuantos alumnos hay
+		System.out.println("\nCantidad de alumnos por aula:");
+		for (Map.Entry<String, List<Alumno>> entry : aulas.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue().size() + " alumnos");
 		}
-	}
 
-	// 6. Eliminar alumnos suspensos
-	public static void eliminarSuspensos(List<Alumno> listaAlumnos) {
-		for (Alumno alumno : listaAlumnos) {
-			if(alumno.getNotaMedia()<5) {
-				listaAlumnos.remove(alumno);
-			}
+		// Solicitar el nombre de 1 aula y mostrar todos los alumnos del aula si el aula existe
+		String nombreAula = Utilidades.pideDatoCadena("\nIntroduce nombre del aula: ");
+		if (aulas.containsKey(nombreAula)) {
+			System.out.println("Alumnos en " + nombreAula + ":");
+		    for (Alumno alumno : aulas.get(nombreAula)) {
+		        System.out.println("  " + alumno);
+		    }
+		} else {
+			System.out.println("El aula no existe.");
 		}
+
 	}
 
 }

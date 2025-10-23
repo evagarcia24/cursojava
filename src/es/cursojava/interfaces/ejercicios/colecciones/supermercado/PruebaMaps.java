@@ -1,4 +1,4 @@
-package es.cursojava.interfaces.ejercicios.colecciones;
+package es.cursojava.interfaces.ejercicios.colecciones.supermercado;
 
 import java.util.Collection;
 import java.util.HashMap;
