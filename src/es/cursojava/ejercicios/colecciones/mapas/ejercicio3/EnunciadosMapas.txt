@@ -1,25 +1,30 @@
 
-
-Ejercicio 3 Mapas
-Ejercicio: Biblioteca por autores
+Ejercicio 3: Biblioteca por autores
 
 Clase Autor -> nombre, nacionalidad
-Libro -> Titulo, isbn, anio 
+Libro -> titulo, isbn, anio 
 
 Crear una biblioteca donde:
 La clave del mapa sea un objeto Autor.
-El valor sea una lista de libros 
-(List<Libro>) escritos por ese autor.
+El valor sea una lista de libros (List<Libro>)
+escritos por ese autor.
 
-Crear los objetos correspondientes para
- que haya 9 libros y 4 autores
+Crear los objetos correspondientes para que 
+haya 9 libros y 4 autores
 
-+ mostrar las nacionalidades de los 
-autores
-+ mostrar el título de todos los 
-libros publicados después del 2010
-+ mostrar por cada autor que tenga 
-más de dos libros su nombre y el nombre
-de todos los libros que tiene publicados
-
-
++ mostrar las nacionalidades de los autores
++ mostrar el título de todos los libros 
+publicados después del 2010
++ mostrar por cada autor que tenga más de dos
+libros su nombre y el nombre de todos los libros
+que tiene publicados
++ Solicitar los datos de un libro, autor, 
+titulo, isbn y año de publicación, 
+	- si el autor no está en la biblioteca, 
+	solicitar la nacionalidad del autor y meterlo
+	en la biblioteca, 
+	- si el autor sí está ya, agregar el libro
+	a su listado
+	
++ Solicitar un isbn, si algún libro tiene ese
+isbn hay que eliminarlo
