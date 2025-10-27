@@ -9,7 +9,12 @@ public class MainBiblioteca {
 
 	public static void main(String[] args) {
 		
-		Map<Autor, List<Libro>> biblioteca = new HashMap<>();
+
+		
+		Autor autor1 = new Autor("NombreAutor1", "Española");
+		Autor autor2 = new Autor("NombreAutor2", "Cubana");
+		Autor autor3 = new Autor("NombreAutor3", "Inglesa");
+		Autor autor4 = new Autor("NombreAutor4", "Francesa");
 				
 		Libro libro1 = new Libro("Titulo1", "isbn1", 1980);
 		Libro libro2 = new Libro("Titulo2", "isbn2", 1981);
@@ -21,11 +26,9 @@ public class MainBiblioteca {
 		Libro libro8 = new Libro("Titulo8", "isbn8", 2011);
 		Libro libro9 = new Libro("Titulo9", "isbn9", 2012);
 		
-		Autor autor1 = new Autor("NombreAutor1", "Española");
-		Autor autor2 = new Autor("NombreAutor2", "Cubana");
-		Autor autor3 = new Autor("NombreAutor3", "Inglesa");
-		Autor autor4 = new Autor("NombreAutor4", "Francesa");
+		Map<Autor, List<Libro>> biblioteca = new HashMap<>();
 		
+
 		List<Libro> librosAutor1 = new ArrayList<>();
 		librosAutor1.add(libro1);
 		librosAutor1.add(libro2);
