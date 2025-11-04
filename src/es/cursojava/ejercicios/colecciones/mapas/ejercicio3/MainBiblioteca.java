@@ -9,7 +9,7 @@ public class MainBiblioteca {
 
 	public static void main(String[] args) {
 		
-
+		Exception exc = new Exception();
 		
 		Autor autor1 = new Autor("NombreAutor1", "Española");
 		Autor autor2 = new Autor("NombreAutor2", "Cubana");
@@ -51,16 +51,34 @@ public class MainBiblioteca {
 		biblioteca.put(autor3, librosAutor3);
 		biblioteca.put(autor4, librosAutor4);
 
-		
+		// mostrar las nacionalidades de los autores		
 		System.out.println("Nacionalidades de los autores:");
+		System.out.println("\n");
 		for (Autor autor : biblioteca.keySet()) {
 		    System.out.println("\t" + autor.getNacionalidad());
 		}
 
 
 		
-// mostrar las nacionalidades de los autores
+
 // mostrar el título de todos los libros publicados después del 2010
+		System.out.println("\nLibros publicados después del 2010:");
+		System.out.println("\n");
+
+		for (Map.Entry<Autor, List<Libro>> entry : biblioteca.entrySet()) {
+		    Autor autor = entry.getKey();
+		    List<Libro> libros = entry.getValue();
+
+		    for (Libro libro : libros) {
+		        if (libro.getAnio() > 2010) {
+		            System.out.println("\t" + libro.getTitulo() +" - "+ autor.getNombre() +" - "+ libro.getAnio());
+		        }
+		    }
+		}
+
+		
+		
+		
 // mostrar por cada autor que tenga más de dos libros su nombre y el nombre de todos los libros q tiene publicados
 // Solicitar los datos de un libro, autor, 	titulo, isbn y año de publicación, 
 		//	- si el autor no está en la biblioteca, solicitar la nacionalidad del autor y meterlo en la biblioteca, 
