@@ -45,7 +45,7 @@ public class Utilidades {
 	
 	public static int pideDatoNumerico(String texto) {
 		int numero = 0;
-		System.out.println(texto);
+		System.out.println(numero);
 		Scanner scan = new Scanner (System.in);
 		numero = scan.nextInt();
 		
