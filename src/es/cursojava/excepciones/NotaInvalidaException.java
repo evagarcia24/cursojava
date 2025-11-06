@@ -14,4 +14,9 @@ package es.cursojava.excepciones;
 
 public class NotaInvalidaException extends Exception {
 
+	// Constructor que recibe un mensaje de error
+	public NotaInvalidaException(String mensajeError) {
+		super(mensajeError);
+	}
+
 }
