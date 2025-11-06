@@ -20,6 +20,7 @@ public class Alumno {
 	private String dni;
 	private double notaMedia;
 	private String[] asignaturas;
+	private int edad;
 
 
 	// Constructor con nombre y dni
@@ -38,13 +39,17 @@ public class Alumno {
 	}
 
 	// Constructor con todas las variables de instancia
-	public Alumno(String nombre, String dni, double notaMedia, String[] asignaturas) {
+
+	public Alumno(String nombre, String dni, double notaMedia, String[] asignaturas, int edad) {
+		super();
 		this.nombre = nombre;
 		this.dni = dni;
 		this.notaMedia = notaMedia;
 		this.asignaturas = asignaturas;
-
+		this.edad = edad;
 	}
+
+	
 
 	// GETTERS Y SETTERS
 	public String getNombre() {
