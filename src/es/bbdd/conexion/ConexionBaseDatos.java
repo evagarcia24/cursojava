@@ -14,7 +14,7 @@ public class ConexionBaseDatos {
 	}
 
 	private static void conectaOracle() {
-		String url_oracle = "jdbc:oracle:thin:llorente/password@//localhost:1522/XEPDB1";
+		String url_oracle = "jdbc:oracle:thin:getafe/password@//localhost:1522/XEPDB1";
 		String url_oracle2 = "jdbc:oracle:thin:@//localhost:1522/XEPDB1";
 		String username = "getafe";
 		String password = "password";
