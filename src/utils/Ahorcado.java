@@ -1,5 +1,7 @@
 package utils;
 
+import es.cursojava.utils.Utilidades;
+
 public class Ahorcado {
 
 	private static String[] sujetos = { "El gato", "La niña", "Mi amigo", "Un hombre", "La policía", "El perro",

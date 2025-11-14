@@ -1,6 +1,5 @@
 package oo;
 
-import java.util.Arrays;
 import es.cursojava.excepciones.NotaInvalidaException;
 
 public class Alumno {
@@ -10,8 +9,8 @@ public class Alumno {
 	private double notaMedia;
 	private int edad;
 
-	public Alumno(String nombre, double notaMedia, int edad) throws NotaInvalidaException {
-		if (edad <= 0) {
+	public Alumno(String nombre, String string, double d) throws NotaInvalidaException {
+		if (d <= 0) {
 	        throw new IllegalArgumentException("Error. La edad debe ser mayor que 0.");
 	    }
 

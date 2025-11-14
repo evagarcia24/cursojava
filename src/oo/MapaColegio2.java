@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import es.cursojava.oo.Alumno;
+import es.cursojava.excepciones.NotaInvalidaException;
 
 public class MapaColegio2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NotaInvalidaException {
 		Colegio colegio1 = new Colegio("Cole1", "Dir1");
 		Colegio colegio2 = new Colegio("Cole2", "Dir2");
 

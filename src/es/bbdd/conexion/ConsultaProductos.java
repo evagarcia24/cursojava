@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class ConsultaProductos {
-	private static final String CONSULTA_PRODUCTOS="SELECT " + "ID,NOMBRE,PRECIO,STOCK,FECHA_ALTA,ESTADO,CODIGO_SKU,CREADO_POR,IVA FROM TB_PRODUCTOS_PROFE";
+	private static final String CONSULTA_PRODUCTOS = "SELECT "
+			+ "ID,NOMBRE,PRECIO,STOCK,FECHA_ALTA,ESTADO,CODIGO_SKU,CREADO_POR,IVA FROM TB_PRODUCTOS_PROFE";
 
 	public static void main(String[] args) {
 
@@ -29,8 +29,7 @@ public class ConsultaProductos {
 				int edad = rs.getInt("EDAD");
 				double salario = rs.getDouble("SALARIO");
 
-				System.out.println("Registro.[ id: " + id + ", nombre: " + nombre + ", edad: " + edad + ", salario: "
-						+ salario + "]");
+				System.out.println("Registro.[ id: " + id + ", nombre: " + nombre + ", edad: " + edad + ", salario: " + salario + "]");
 
 			}
 		} catch (SQLException e) {
@@ -51,5 +50,3 @@ public class ConsultaProductos {
 	}
 
 }
-
-

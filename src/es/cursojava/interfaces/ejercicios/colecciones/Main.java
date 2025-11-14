@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.cursojava.excepciones.NotaInvalidaException;
 import es.cursojava.utils.Utilidades;
 import oo.Alumno;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NotaInvalidaException {
 
 		// Creacion de 7 alumnos (con nombre, dni y nota)
 		Alumno alumno1 = new Alumno("Pedro", "111A", 4);

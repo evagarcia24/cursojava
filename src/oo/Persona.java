@@ -19,4 +19,14 @@ public class Persona {
 	public void correr() {
 		
 	}
+
+	public String getDni() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public char[] getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

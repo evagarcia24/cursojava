@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import es.cursojava.oo.Alumno;
+import es.cursojava.excepciones.NotaInvalidaException;
+
 
 public class MapaColegio {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NotaInvalidaException {
 		List<Alumno> alumnos = generaAlumnos();
 		
 		Map<String,List<Alumno>> aulas = new HashMap<>();
@@ -42,7 +43,7 @@ public class MapaColegio {
 		
 	}
 	
-	static List<Alumno> generaAlumnos(){
+	static List<Alumno> generaAlumnos() throws NotaInvalidaException{
 		Alumno alumno1 = new Alumno("A1", "111A", 7.5);
 		Alumno alumno2 = new Alumno("A2", "222B", 2.5);
 		Alumno alumno3 = new Alumno("A3", "333C", 3.5);

@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import es.cursojava.utils.Utilidades;
 import oo.Persona;
-import utils.Utilidades;
+
 
 public class PruebaMaps {
 
