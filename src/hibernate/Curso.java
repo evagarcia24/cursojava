@@ -1,68 +1,63 @@
 package hibernate;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "TB_CURSO")
 public class Curso {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id; // Clave primaria autoincremental
+
 	@Column(nullable = false, unique = true, length = 20)
-	private String codigo;
-	
 	@NotBlank
-	@Column(length = 100, nullable = false)
-	private String nombre;
-	
+	private String codigo; // Código único, obligatorio
+
+	@Column(nullable = false, length = 100)
+	@NotBlank
+	private String nombre; // Obligatorio
+
 	@Column(length = 1000)
-	@Size(min = 500, max = 1000)
-	private String descripcion;
-	
+	@Size(max = 1000)
+	private String descripcion; // Opcional
+
 	@Column(nullable = false)
 	@Min(1)
-	private int horasTotales;
-	
+	private int horasTotales; // Obligatorio, >0
+
 	@Column(nullable = false)
-	private boolean activo = true;
-	
+	private boolean activo = true; // Obligatorio, default true
+
 	@Column(length = 20)
 	@Pattern(regexp = "Básico|Intermedio|Avanzado")
-	private String nivel;
-	
-	@Column(nullable = false, length = 20)
-	@Pattern(regexp = "Programación | Big Dat | DevOps | Ofimática")
-	private String categoria;
-	
-	@Min(0)
-	private double precio;
-	
-	private LocalDate fechaInicio;
-	
-	private LocalDate fechaFin;
-	
-	private LocalDateTime fechaCreacion;
+	private String nivel; // Opcional, valores limitados
 
-	// Constructor vacio
+	@Column(length = 50)
+	private String categoria; // Opcional, longitud máxima 50
+
+	@Min(0)
+	private double precio; // Opcional, >=0
+
+	private LocalDate fechaInicio; // Opcional
+	private LocalDate fechaFin; // Opcional
+
+	@Column(nullable = false)
+	private LocalDateTime fechaCreacion; // Obligatoria
+
+	// Constructor vacío
 	public Curso() {
-		super();
+		this.fechaCreacion = LocalDateTime.now(); // Se asigna automáticamente
+		this.activo = true;
 	}
 
-	public Curso(String codigo, String nombre, String descripcion, int horasTotales, String activo, String nivel,
-			String categoria, double precio, Date fechaInicio, Date fechaFin, Date fechaCreacion) {
-		super();
+	// Constructor completo
+	public Curso(String codigo, String nombre, String descripcion, int horasTotales, boolean activo, String nivel,
+			String categoria, double precio, LocalDate fechaInicio, LocalDate fechaFin) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -73,7 +68,13 @@ public class Curso {
 		this.precio = precio;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.fechaCreacion = fechaCreacion;
+		this.fechaCreacion = LocalDateTime.now(); // Se asigna automáticamente
+	}
+
+	// Getters y Setters
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getCodigo() {
@@ -108,11 +109,11 @@ public class Curso {
 		this.horasTotales = horasTotales;
 	}
 
-	public String getActivo() {
+	public boolean isActivo() {
 		return activo;
 	}
 
-	public void setActivo(String activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 
@@ -140,28 +141,31 @@ public class Curso {
 		this.precio = precio;
 	}
 
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public Date getFechaCreacion() {
+	public LocalDateTime getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+	@Override
+	public String toString() {
+		return "Curso{" + "id=" + id + ", codigo='" + codigo + '\'' + ", nombre='" + nombre + '\'' + ", descripcion='"
+				+ descripcion + '\'' + ", horasTotales=" + horasTotales + ", activo=" + activo + ", nivel='" + nivel
+				+ '\'' + ", categoria='" + categoria + '\'' + ", precio=" + precio + ", fechaInicio=" + fechaInicio
+				+ ", fechaFin=" + fechaFin + ", fechaCreacion=" + fechaCreacion + '}';
 	}
-
 }

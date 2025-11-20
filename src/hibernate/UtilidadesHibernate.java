@@ -1,43 +1,87 @@
 package hibernate;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 
+import java.time.LocalDate;
+import java.util.List;
 
 public class UtilidadesHibernate {
-	public static void main(String[] args) {
 
-		try {
-			SessionFactory sessionFactory = new Configuration().configure() // Carga hibernate.cfg.xml
-					.buildSessionFactory();
-			Session session = sessionFactory.openSession();
-			System.out.println("Conectado");
+    private static final SessionFactory sessionFactory;
 
-			Transaction tx = session.beginTransaction();
+    static {
+        try {
+            sessionFactory = new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(Curso.class)
+                    .buildSessionFactory();
+        } catch (Throwable ex) {
+            throw new ExceptionInInitializerError("Error al crear SessionFactory: " + ex);
+        }
+    }
 
-			Empresa empresa1 = new Empresa("Empresa1", "S.A.", "111A", "Venta Jabones", null);
-			Empresa empresa2 = new Empresa("Empresa2", "S.L.", "222A", "Venta FunkoPop", null);
+    public static Session getSession() {
+        return sessionFactory.openSession();
+    }
 
-			session.persist(empresa1); // Esto seria como el INSERT INTO TABLE
-			session.persist(empresa2);
+    // Insertar 3 cursos
+    public static void insertarCursos() {
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
 
-			tx.commit();
+        try {
+            Curso c1 = new Curso("COD001", "Java Avanzado",
+                    "Curso completo de Java con POO y Spring Boot", 120, true,
+                    "Avanzado", "Programación", 1999.99,
+                    LocalDate.of(2025, 11, 20), LocalDate.of(2025, 12, 20));
 
-			Query<Empresa> query = session.createQuery("from Empresa", Empresa.class); // Esto se denomina HQL (Hibernate Query Language)
-			List<Empresa> empresas = query.list();
-			
-			for (Empresa empresa : empresas) {
-				System.out.println(empresa);
+            Curso c2 = new Curso("COD002", "Big Data Básico",
+                    "Introducción a Big Data y análisis de datos masivos", 80, true,
+                    "Básico", "Big Data", 999.99,
+                    LocalDate.of(2025, 10, 1), LocalDate.of(2025, 11, 1));
+
+            Curso c3 = new Curso("COD003", "DevOps Intermedio",
+                    "Curso de integración continua y despliegue con DevOps", 100, true,
+                    "Intermedio", "DevOps", 599.99,
+                    LocalDate.of(2025, 11, 5), LocalDate.of(2025, 12, 5));
+
+            session.persist(c1);
+            session.persist(c2);
+            session.persist(c3);
+
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // Mostrar todos los cursos
+    public static void mostrarTodosLosCursos() {
+        Session session = getSession();
+        try {
+            List<Curso> cursos = session.createQuery("FROM Curso", Curso.class).list();
+            for (Curso curso : cursos) {
+				System.out.println(curso);
 			}
+        } finally {
+            session.close();
+        }
+    }
 
-		} catch (Throwable ex) {
-			System.err.println("Error al crear la SessionFactory." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
-	}
+    // Mostrar solo cursos activos
+    public static void mostrarCursosActivos() {
+        Session session = getSession();
+        try {
+            List<Curso> cursos = session.createQuery("FROM Curso WHERE activo = true", Curso.class).list();
+            cursos.forEach(System.out::println);
+        } finally {
+            session.close();
+        }
+    }
 }
