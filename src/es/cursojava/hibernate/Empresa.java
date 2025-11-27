@@ -1,6 +1,6 @@
-package hibernate;
+package es.cursojava.hibernate;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,28 +10,36 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
-@Entity // Esto son ANOTACIONES que se usan mucho EN HIBERNATE, empiezan con arroba (@), NO se pone punto y coma (;) al final. En Hibernate estamos obligados a pober antes de la
-//clase @Entity e importar import jakarta.persistence.Entity;
+@Entity
 @Table(name = "TB_EMPRESA")
 public class Empresa {
-	@Id // En Hibernate estamos obligados a pober @Id (seria el PRIMARY KEY en la tabla) e importar import jakarta.persistence.Id;
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id; // Se usa long porque no se sabe hasta cuantos ids se van a guardar
-	@Column (length = 30)
+	private long id;
+	@Column(length = 30)
 	private String nombre;
 	private String tipoSociedad;
 	private String cif;
-	@Column (name = "ACTIVIDAD")
+	@Column(name = "actividad")
 	private String tipoActividad;
 	private Date fechaConstitucion;
-
-	// En Hibernate se necesita obligatoriamente siempre un constructor vacio
+	
 	public Empresa() {
 		super();
 	}
-
-	// Se pueden (y deben) crear otros constructores a parte del vacio
-	public Empresa(long id, String nombre, String tipoSociedad, String cif, String tipoActividad, Date fechaConstitucion) {
+	
+	public Empresa( String nombre, String tipoSociedad, String cif, String tipoActividad,
+			Date fechaConstitucion) {
+		super();
+		this.nombre = nombre;
+		this.tipoSociedad = tipoSociedad;
+		this.cif = cif;
+		this.tipoActividad = tipoActividad;
+		this.fechaConstitucion = fechaConstitucion;
+	}
+	
+	public Empresa(long id, String nombre, String tipoSociedad, String cif, String tipoActividad,
+			Date fechaConstitucion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -40,17 +48,7 @@ public class Empresa {
 		this.tipoActividad = tipoActividad;
 		this.fechaConstitucion = fechaConstitucion;
 	}
-	
-	public Empresa(String nombre, String tipoSociedad, String cif, String tipoActividad, Date fechaConstitucion) {
-		super();
-		this.nombre = nombre;
-		this.tipoSociedad = tipoSociedad;
-		this.cif = cif;
-		this.tipoActividad = tipoActividad;
-		this.fechaConstitucion = fechaConstitucion;
-	}
 
-	// Los metodos getters y setters son obligatorios en Hibernate, y tienen que ser public
 	public long getId() {
 		return id;
 	}
@@ -99,4 +97,14 @@ public class Empresa {
 		this.fechaConstitucion = fechaConstitucion;
 	}
 
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", nombre=" + nombre + ", tipoSociedad=" + tipoSociedad + ", cif=" + cif
+				+ ", tipoActividad=" + tipoActividad + ", fechaConstitucion=" + fechaConstitucion + "]";
+	}
+	
+	
+	
+	
+	
 }

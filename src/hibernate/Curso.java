@@ -1,29 +1,37 @@
 package hibernate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "TB_CURSO")
-public class Curso {
+public class Curso implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // Clave primaria autoincremental
 
-	@Column(nullable = false, unique = true, length = 20)
 	@NotBlank
+	@NotNull
+	@Column(nullable = false, unique = true, length = 20)
 	private String codigo; // Código único, obligatorio
 
-	@Column(nullable = false, length = 100)
 	@NotBlank
+	@NotNull
+	@Column(nullable = false, length = 100)
 	private String nombre; // Obligatorio
 
-	@Column(length = 1000)
+	@NotBlank
+	@NotNull
 	@Size(max = 1000)
+	@Column(length = 1000)	
 	private String descripcion; // Opcional
 
 	@Column(nullable = false)
@@ -40,24 +48,28 @@ public class Curso {
 	@Column(length = 50)
 	private String categoria; // Opcional, longitud máxima 50
 
-	@Min(0)
-	private double precio; // Opcional, >=0
+	// precio puede ser null (opcional). Usamos DecimalMin para números decimales
+	@Column(precision = 10, scale = 2)
+	@DecimalMin(value = "0.0", inclusive = true)
+	private Double precio; // Opcional, >=0
 
+	@Column
 	private LocalDate fechaInicio; // Opcional
+
+	@Column
 	private LocalDate fechaFin; // Opcional
 
-	@Column(nullable = false)
+	@Column(nullable = false, updatable = false)
 	private LocalDateTime fechaCreacion; // Obligatoria
 
 	// Constructor vacío
 	public Curso() {
-		this.fechaCreacion = LocalDateTime.now(); // Se asigna automáticamente
 		this.activo = true;
 	}
 
-	// Constructor completo
+	// Constructor completo (no asigna fechaCreacion aquí; se gestionará en @PrePersist)
 	public Curso(String codigo, String nombre, String descripcion, int horasTotales, boolean activo, String nivel,
-			String categoria, double precio, LocalDate fechaInicio, LocalDate fechaFin) {
+			String categoria, Double precio, LocalDate fechaInicio, LocalDate fechaFin) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -68,11 +80,16 @@ public class Curso {
 		this.precio = precio;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.fechaCreacion = LocalDateTime.now(); // Se asigna automáticamente
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		if (this.fechaCreacion == null) {
+			this.fechaCreacion = LocalDateTime.now();
+		}
 	}
 
 	// Getters y Setters
-
 	public Long getId() {
 		return id;
 	}
@@ -133,11 +150,11 @@ public class Curso {
 		this.categoria = categoria;
 	}
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 
@@ -164,8 +181,23 @@ public class Curso {
 	@Override
 	public String toString() {
 		return "Curso{" + "id=" + id + ", codigo='" + codigo + '\'' + ", nombre='" + nombre + '\'' + ", descripcion='"
-				+ descripcion + '\'' + ", horasTotales=" + horasTotales + ", activo=" + activo + ", nivel='" + nivel
-				+ '\'' + ", categoria='" + categoria + '\'' + ", precio=" + precio + ", fechaInicio=" + fechaInicio
-				+ ", fechaFin=" + fechaFin + ", fechaCreacion=" + fechaCreacion + '}';
+			+ descripcion + '\'' + ", horasTotales=" + horasTotales + ", activo=" + activo + ", nivel='" + nivel
+			+ '\'' + ", categoria='" + categoria + '\'' + ", precio=" + precio + ", fechaInicio=" + fechaInicio
+			+ ", fechaFin=" + fechaFin + ", fechaCreacion=" + fechaCreacion + '}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Curso curso = (Curso) o;
+		return id != null && Objects.equals(id, curso.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 }

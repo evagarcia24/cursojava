@@ -1,80 +1,73 @@
 package es.cursojava.excepciones;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.time.Year;
 
 public class Utilidades {
 
+	// Scanner compartido para no cerrar System.in en cada método
+	private static final Scanner SCANNER = new Scanner(System.in);
+
 	public static int calcularEdad(int anioNacimiento) {
-		int edad = 0;
-
-		edad = 2025 - anioNacimiento;
-
-		return edad;
+		int currentYear = Year.now().getValue();
+		int edad = currentYear - anioNacimiento;
+		return edad >= 0 ? edad : 0;
 	}
 
 	public static void pintaMenu(String[] opciones) {
-
-//		for (String opcion : opciones) {
-//			System.out.println(opcion);
-//		}
-//		System.out.println("Introduce una opción");
 		pintaMenu(opciones, "Introduce una opción");
 	}
 
 	public static void pintaMenu(String[] opciones, String texto) {
-//		pintaMenu(opciones);
-		for (String opcion : opciones) {
-			System.out.println(opcion);
+		if (opciones != null) {
+			for (String opcion : opciones) {
+				System.out.println(opcion);
+			}
 		}
 		System.out.println(texto);
 
 	}
 
 	public static int pideDatoNumerico(String texto) {
-		int numero = 0;
-		System.out.println(texto);
-		Scanner scan = new Scanner(System.in);
-
-		try {
-			return scan.nextInt();
-		} catch (InputMismatchException | NumberFormatException e) {
-			System.out.println("No has introducido un valor correcto");
-			return pideDatoNumerico(texto);
+		while (true) {
+			System.out.println(texto);
+			String line = SCANNER.nextLine();
+			try {
+				return Integer.parseInt(line.trim());
+			} catch (NumberFormatException e) {
+				System.out.println("No has introducido un valor correcto. Intenta de nuevo.");
+			}
 		}
-
 	}
 
+	// pide dato double
 	public static double pideDatoDecimal(String texto) {
-		double numero = 0;
-		boolean hayError;
-		do {
-
+		while (true) {
 			System.out.println(texto);
-			Scanner scan = new Scanner(System.in);
-
+			String line = SCANNER.nextLine();
 			try {
-				numero = scan.nextDouble();
-				hayError = false;
-			} catch (InputMismatchException ime) {
-				hayError = true;
-				System.out.println("Valor introducido no correcto");
-			} finally {
-				scan.close();
+				return Double.parseDouble(line.trim());
+			} catch (NumberFormatException e) {
+				System.out.println("Valor introducido no correcto. Intenta de nuevo.");
 			}
+		}
+	}
 
-		} while (hayError);
-
-		return numero;
-
+	// pide dato float
+	public static float pideDatoDecimalF(String texto) {
+		while (true) {
+			System.out.println(texto);
+			String line = SCANNER.nextLine();
+			try {
+				return Float.parseFloat(line.trim());
+			} catch (NumberFormatException e) {
+				System.out.println("Valor introducido no correcto. Intenta de nuevo.");
+			}
+		}
 	}
 
 	public static String pideDatoCadena(String texto) {
-		String dato = "";
 		System.out.println(texto);
-		Scanner scan = new Scanner(System.in);
-		dato = scan.nextLine();
-
-		return dato;
+		return SCANNER.nextLine();
 	}
 }

@@ -1,4 +1,4 @@
-package es.cursojava.hibernate;
+package hibernateProfe;
 
 import java.util.Calendar;
 import java.util.List;
@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import es.cursojava.hibernate.Empresa;
 
 public class HibernateMain {
     public static void main(String[] args) {
