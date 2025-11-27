@@ -13,17 +13,13 @@ public class UtilidadesHibernate {
 	private Session session;
 	private Transaction transaction;
 
-	public CursoDAO() {
+	public UtilidadesHibernate() {
 		session = HibernateUtil.getSessionFactory();
 		transaction = session.beginTransaction();
 	}
 	
-	
-
-
-
 		
-		private static Session getSession() {
+		public static Session getSession() {
 			SessionFactory sessionFactory = new Configuration()
 	                .configure() // Carga hibernate.cfg.xml
 	                .buildSessionFactory();
