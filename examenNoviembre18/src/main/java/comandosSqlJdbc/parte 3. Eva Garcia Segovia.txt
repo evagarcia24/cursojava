@@ -1,0 +1,26 @@
+CREATE TABLE TB_Productos(
+  id              NUMBER GENERATED ALWAYS AS IDENTITY,
+  nombre          VARCHAR2(100)   NOT NULL,
+  tipo            VARCHAR2(12)    NOT NULL,
+  precio          NUMBER(6,2)     NOT NULL,
+  stock           NUMBER(8)       NOT NULL,
+ CONSTRAINT ck_tipo CHECK (tipo IN ('Alimentacion','Electronica', 'Ropa'))
+);
+
+-- Inserto 3 productos:
+INSERT INTO TB_Productos (nombre, tipo, precio, stock)
+VALUES ('Queso', 'Alimentacion', 9.99, 20);
+
+INSERT INTO TB_Productos (nombre, tipo, precio, stock)
+VALUES ('Falda', 'Ropa', 19.00, 25);
+
+INSERT INTO TB_Productos (nombre, tipo, precio, stock)
+VALUES ('Tablet', 'Electronica', 99.99, 5);
+
+
+
+-- Consultar todos los productos de la tabla:
+SELECT * FROM TB_Productos;
+
+-- Calcular precio medio y cuantos articulos por cada tipo
+SELECT precio ROUND(AVG(precio, 2) AS precio_medio FROM TB_Productos;
