@@ -1,0 +1,6 @@
+{
+	"nodes":[
+		{"id":"5773b63dd52c003a","x":-94,"y":-12,"width":250,"height":60,"type":"text","text":"Ver variables locales y globales (inicializacion) → Examen???\nArrayIndexOutOfBoundsException y NullPointerException → Examen???\nPasos por valor y por referencia → Examen???"}
+	],
+	"edges":[]
+}
