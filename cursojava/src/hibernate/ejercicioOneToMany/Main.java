@@ -31,7 +31,7 @@ public class Main {
 
         tx.commit();
 
-        System.out.println("Datos cargados con éxito!....");
+        System.out.println("Datos cargados con éxito!.....");
 
         // Buscar aula del alumno100
         session.beginTransaction();
