@@ -13,7 +13,7 @@ public class Ejercicio1 {
 		try {
 			numero = scan.nextInt();
 		} catch (InputMismatchException e) {
-			System.out.println("Error: Debes introducir un número.\n");
+			System.out.println("Error: Debes introducir un número:\n");
 			return pideDatoNumerico(texto); 
 		} 
 //		finally {
