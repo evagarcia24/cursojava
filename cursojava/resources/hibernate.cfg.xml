@@ -4,9 +4,9 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!-- Conexión JDBC -->
-        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:getafe/password@//localhost:1522/XEPDB1</property>
+		
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1522/XEPDB1</property>
         <property name="hibernate.connection.username">getafe</property>
         <property name="hibernate.connection.password">password</property>
 
@@ -19,7 +19,7 @@
 
         <!-- Crear y borrar la base de datos en cada ejecución -->
         <!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- none(Por defecto en Hibernate 5.2+) No realiza ninguna acción sobre el esquema.
         validate:	Comprueba que las tablas y columnas existen y coinciden con las entidades. No crea ni actualiza.
@@ -29,8 +29,18 @@
         drop:	Elimina el esquema sin crearlo de nuevo (raro de usar).
         create-only:	Crea el esquema al iniciar, pero no lo elimina al cerrar (Hibernate 5.5+). -->
         <!-- Entidad mapeada -->
-        <mapping class="es.curso.java.hibernate.Empresa" /> Cada clase (entity) que definimos se debe poner aqui
-        <mapping class="es.curso.java.hibernate.Curso" />
-        
+       <mapping class="hibernate.Empresa" /> <!-- Cada clase (entity) que definimos se debe poner aqui  -->
+       <mapping class="hibernate.hibernate.ejercicio1.entites.Curso" />
+       <mapping class="ejercicioCompletoHibernate.entity.Empleado"/>
+       <mapping class="ejercicioCompletoHibernate.entity.Estudiante"/>
+       <mapping class="ejercicioCompletoHibernate.entity.CarnetBiblioteca"/>
+       <mapping class="hibernate.ejercicioOneToOne.entites.Aula"/>
+       <mapping class="hibernate.ejercicioOneToOne.entites.Curso"/>
+       <mapping class="hibernate.entitys.Autor"/>
+       <mapping class="hibernate.entitys.Book"/>
+       <mapping class="hibernate.entitys.Cliente"/>
+       <mapping class="hibernate.entitys.Pedido"/>
+       <mapping class="hibernate.ejercicioOneToOne.entites.Alumno"/>
+               
     </session-factory>
 </hibernate-configuration>

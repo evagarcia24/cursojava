@@ -23,6 +23,10 @@
 	<logger name="org.hibernate" level="ERROR" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
+	
+		<logger name="org.mongodb" level="ERROR" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
 
 
 	<!-- Nivel por defecto -->

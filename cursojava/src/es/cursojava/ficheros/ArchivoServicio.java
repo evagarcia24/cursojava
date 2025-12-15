@@ -197,4 +197,11 @@ public class ArchivoServicio {
 			System.err.println("No es un directorio");
 		}
 	}
+
+
+	public static void crearArchivoProductos(String string, List<es.cursojava.bbdd.Producto> productos,
+			String string2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

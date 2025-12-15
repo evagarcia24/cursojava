@@ -27,7 +27,7 @@ public class EjercicioHQL {
 		
 	}
 	
-	public Curso obtenerCursoPorCodigo(String codigo) {
+	public static Curso obtenerCursoPorCodigo(String codigo) {
 		Query<Curso> query = session.createQuery("from Curso where codigo = :codigoParam", Curso.class);
 		query.setParameter("codigoParam", codigo);
 

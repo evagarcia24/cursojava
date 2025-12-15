@@ -14,6 +14,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,8 +35,7 @@ public class Curso implements Serializable {
     @NotNull
     @NotBlank
     @Size(max = 20)
-    @Column(name = "codigo", nullable = false, unique = true, length = 20)
-    private String codigo; // obligatorio, único, max 20
+    @Column(name = "codigo", nullable = false, unique = true, length = 20) String codigo; // obligatorio, único, max 20
 
     @NotNull
     @NotBlank
@@ -48,9 +48,9 @@ public class Curso implements Serializable {
     private String descripcion; // opcional, max 1000
 
     @NotNull
-    @Min(1)
+    @DecimalMin(value = "0.0", inclusive = false)
     @Column(name = "horas_totales", nullable = false)
-    private Integer horasTotales; // obligatorio, entero positivo (>0)
+    private BigDecimal horasTotales; // debe ser >0. Ej: 0.1, 1, 2.5
 
     @NotNull
     @Column(name = "activo", nullable = false)
@@ -78,6 +78,8 @@ public class Curso implements Serializable {
     @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime fechaCreacion; // obligatorio, set en PrePersist
 
+	private Aula aula;
+
     // Constructors
     public Curso() {
         // JPA
@@ -90,18 +92,16 @@ public class Curso implements Serializable {
         this.activo = Boolean.TRUE;
     }
 
+    public Curso(String nombre, String descripcion) {
+    	this.nombre = nombre;
+		this.descripcion = descripcion;
+    }
     
     
-    public Curso(@NotNull @NotBlank @Size(max = 20) String codigo,
-			@NotNull @NotBlank @Size(max = 100) String nombre, 
-			@Size(max = 1000) String descripcion,
-			@NotNull @Min(1) Integer horasTotales, 
-			@NotNull Boolean activo, 
-			@Size(max = 20) String nivel,
-			@Size(max = 50) String categoria, 
-			@PositiveOrZero BigDecimal precio, 
-			LocalDate fechaInicio,
-			LocalDate fechaFin) {
+	public Curso(@NotNull @NotBlank @Size(max = 20) String codigo, @NotNull @NotBlank @Size(max = 100) String nombre,
+			@Size(max = 1000) String descripcion, @NotNull @Min(1) Integer horasTotales, @NotNull Boolean activo,
+			@Size(max = 20) String nivel, @Size(max = 50) String categoria, @PositiveOrZero BigDecimal precio,
+			LocalDate fechaInicio, LocalDate fechaFin, @NotNull LocalDateTime fechaCreacion, Aula aula) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -114,104 +114,121 @@ public class Curso implements Serializable {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.fechaCreacion = fechaCreacion;
+		this.aula = aula;
 	}
+	
 
 	// Getters and setters
-    public Long getId() {
-        return id;
-    }
+	 public Long getId() {
+			return id;
+		}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+		public void setId(Long id) {
+			this.id = id;
+		}
 
-    public String getCodigo() {
-        return codigo;
-    }
+		public String getCodigo() {
+			return codigo;
+		}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+		public void setCodigo(String codigo) {
+			this.codigo = codigo;
+		}
 
-    public String getNombre() {
-        return nombre;
-    }
+		public String getNombre() {
+			return nombre;
+		}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+		public String getDescripcion() {
+			return descripcion;
+		}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+		public void setDescripcion(String descripcion) {
+			this.descripcion = descripcion;
+		}
 
-    public Integer getHorasTotales() {
-        return horasTotales;
-    }
+		public Integer getHorasTotales() {
+			return horasTotales;
+		}
 
-    public void setHorasTotales(Integer horasTotales) {
-        this.horasTotales = horasTotales;
-    }
+		public void setHorasTotales(Integer horasTotales) {
+			this.horasTotales = horasTotales;
+		}
 
-    public Boolean getActivo() {
-        return activo;
-    }
+		public Boolean getActivo() {
+			return activo;
+		}
 
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
+		public void setActivo(Boolean activo) {
+			this.activo = activo;
+		}
 
-    public String getNivel() {
-        return nivel;
-    }
+		public String getNivel() {
+			return nivel;
+		}
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
+		public void setNivel(String nivel) {
+			this.nivel = nivel;
+		}
 
-    public String getCategoria() {
-        return categoria;
-    }
+		public String getCategoria() {
+			return categoria;
+		}
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+		public void setCategoria(String categoria) {
+			this.categoria = categoria;
+		}
 
-    public BigDecimal getPrecio() {
-        return precio;
-    }
+		public BigDecimal getPrecio() {
+			return precio;
+		}
 
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
+		public void setPrecio(BigDecimal precio) {
+			this.precio = precio;
+		}
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
-    }
+		public LocalDate getFechaInicio() {
+			return fechaInicio;
+		}
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
+		public void setFechaInicio(LocalDate fechaInicio) {
+			this.fechaInicio = fechaInicio;
+		}
 
-    public LocalDate getFechaFin() {
-        return fechaFin;
-    }
+		public LocalDate getFechaFin() {
+			return fechaFin;
+		}
 
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
-    }
+		public void setFechaFin(LocalDate fechaFin) {
+			this.fechaFin = fechaFin;
+		}
 
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
-    }
+		public LocalDateTime getFechaCreacion() {
+			return fechaCreacion;
+		}
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
+		public void setFechaCreacion(LocalDateTime fechaCreacion) {
+			this.fechaCreacion = fechaCreacion;
+		}
+
+		public Aula getAula() {
+			return aula;
+		}
+
+		public void setAula(Aula aula) {
+			this.aula = aula;
+		}
+
+		public static long getSerialversionuid() {
+			return serialVersionUID;
+		}
+
+
+    
 
     // Validation for date consistency: fechaFin must be null or >= fechaInicio
     @AssertTrue(message = "fechaFin debe ser igual o posterior a fechaInicio")
@@ -225,7 +242,8 @@ public class Curso implements Serializable {
         return !fechaFin.isBefore(fechaInicio);
     }
 
-    @PrePersist
+   
+	@PrePersist
     private void prePersist() {
         if (fechaCreacion == null) {
             fechaCreacion = LocalDateTime.now();
@@ -272,4 +290,6 @@ public class Curso implements Serializable {
                 + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", fechaCreacion=" + fechaCreacion
                 + "]";
     }
+
+	
 }
